@@ -1,14 +1,14 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import productsData from '../../data/products';
 import Product from '../Product/Product';
 
 
 const Products = () => {
-  const [products]  = useState(productsData);
-
+  //const [products]  = useState(productsData);
+  console.log('Products is re-rendered');
   return (
     <section>
-      {products.map(product => (
+      {productsData.map(product => (
         <Product
           key={product.id}
           id={product.id}
@@ -17,8 +17,8 @@ const Products = () => {
           colors={product.colors}
           sizes={product.sizes}
           basePrice={product.basePrice}
-          selectedColor={product.colors[0]} // Ustawienie pierwszego koloru jako wybrany
-          selectedSize={product.sizes[0].name} // Ustawienie pierwszego rozmiaru jako wybrany
+          selectedColor={product.colors[0]}
+          selectedSize={product.sizes[0].name}
         />
       ))}
     </section>

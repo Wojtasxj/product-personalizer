@@ -2,9 +2,11 @@ import React from 'react';
 import OptionSize from '../OptionSize/OptionSize';
 import OptionColor from '../OptionColor/OptionColor';
 import Button from '../Button/Button';
-import styles from './../../components/Product/Product.module.scss'
+import styles from './../Product/Product.module.scss'
 
 const ProductForm = ({ colors, sizes, selectedColor, selectedSize, setSelectedColor, setSelectedSize, basePrice }) => {
+  console.log('ProductForm is re-rendered');  
+  
   return (
     <form className=''>
       <OptionSize sizes={sizes} selectedSize={selectedSize} setSelectedSize={setSelectedSize} />

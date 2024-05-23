@@ -6,7 +6,7 @@ import styles from './Product.module.scss'
 const Product = ({ name, title, colors, sizes, basePrice }) => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
-
+  console.log('Product is re-rendered');
   return (
     <div className={styles.product}>
       <ProductImage name={name} title={title} selectedColor={selectedColor} />

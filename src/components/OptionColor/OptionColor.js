@@ -1,10 +1,19 @@
 import React from 'react';
 import styles from './../../components/Product/Product.module.scss'
+import { useMemo } from 'react';
 
 const OptionColor = ({ colors, selectedColor, setSelectedColor }) => {
   const handleColorChange = (color) => {
+    console.log(`Selected color before setting state: ${color}`);
     setSelectedColor(color);
+    console.log(`Selected color after setting state: ${color}`);
   };
+
+  const getButtonClasses = useMemo(() => {
+    return (color) => {
+      return `${styles.choices.button} ${selectedColor === color ? styles.active : ''} ${styles[`color${color.charAt(0).toUpperCase() + color.slice(1)}`]}`;
+    };
+  }, [selectedColor]);
 
   return (
     <div className={styles.colors}>
@@ -12,11 +21,10 @@ const OptionColor = ({ colors, selectedColor, setSelectedColor }) => {
       <ul className={styles.choices}>
         {colors.map((color, index) => (
           <li key={index}>
-            <button
-              style={{ backgroundColor: color, border: selectedColor === color ? '2px solid black' : 'none' }}
+            <button className={getButtonClasses(color)} 
               onClick={() => handleColorChange(color)}
             >
-              {selectedColor === color && <span>&#10003;</span>}
+              {selectedColor === color}
             </button>
           </li>
         ))}
